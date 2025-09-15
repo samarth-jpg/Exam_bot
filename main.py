@@ -17,3 +17,15 @@ def echo_all(message):
 
 print("🤖 Bot is running...")
 bot.infinity_polling()
+from flask import Flask
+import os
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Your bot is running successfully on Render!"
+
+if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 5000))  # Render gives a PORT env variable
+    app.run(host="0.0.0.0", port=port)
